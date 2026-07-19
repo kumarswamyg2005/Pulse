@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Env / secrets
+.env
+.env.local
+
+# Node
+node_modules/
+dist/
+.vite/
+
+# Installed tooling / local agent config (not part of the product)
+.agents/
+.claude/
+
+# Playwright
+playwright-report/
+test-results/
+.playwright/
+
+# Misc
+.DS_Store
+*.log
+
+# Matt Pocock skills lockfile (tooling)
+skills-lock.json
