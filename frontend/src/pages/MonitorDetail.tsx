@@ -7,7 +7,7 @@ import { StatusDot } from "@/components/StatusDot"
 import { Button } from "@/components/ui/button"
 import { useAuth } from "@/lib/auth"
 import { monitorIncidents } from "@/lib/incidents"
-import { deleteMonitor, getMonitor, getResults, updateMonitor } from "@/lib/monitors"
+import { deleteMonitor, getMonitor, getResults, monitorTarget, updateMonitor } from "@/lib/monitors"
 
 export default function MonitorDetail() {
   const { id = "" } = useParams()
@@ -84,7 +84,7 @@ export default function MonitorDetail() {
               <Field label="Type" value={m.type.toUpperCase()} />
               <Field label="Interval" value={`${m.interval_seconds}s`} />
               <Field label="State" value={m.paused ? "paused" : "active"} />
-              <Field label="Target" value={m.url ?? `${m.host}:${m.port}`} />
+              <Field label="Target" value={monitorTarget(m)} />
               <Field
                 label="Expected status"
                 value={`${m.expected_status_min}–${m.expected_status_max}`}

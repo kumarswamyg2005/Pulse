@@ -44,6 +44,12 @@ export interface MonitorInput {
   public?: boolean
 }
 
+export function monitorTarget(m: Pick<Monitor, "url" | "host" | "port">): string {
+  if (m.url) return m.url
+  if (m.host && m.port != null) return `${m.host}:${m.port}`
+  return m.host ?? ""
+}
+
 export const listMonitors = () => api<Monitor[]>("/monitors")
 export const getMonitor = (id: string) => api<Monitor>(`/monitors/${id}`)
 export const getResults = (id: string) => api<CheckResult[]>(`/monitors/${id}/results`)

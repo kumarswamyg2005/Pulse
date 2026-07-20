@@ -8,7 +8,7 @@ import { StatusDot } from "@/components/StatusDot"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useAuth } from "@/lib/auth"
-import { createMonitor, listMonitors, type MonitorType } from "@/lib/monitors"
+import { createMonitor, listMonitors, monitorTarget, type MonitorType } from "@/lib/monitors"
 
 export default function Dashboard() {
   const { me } = useAuth()
@@ -112,7 +112,7 @@ export default function Dashboard() {
             >
               <div>
                 <div className="font-medium">{m.name}</div>
-                <div className="text-sm text-muted-foreground">{m.url ?? `${m.host}:${m.port}`}</div>
+                <div className="text-sm text-muted-foreground">{monitorTarget(m)}</div>
               </div>
               <div className="flex items-center gap-4 text-sm text-muted-foreground">
                 {m.uptime_24h !== null && <span>{m.uptime_24h}% 24h</span>}
